@@ -14,12 +14,12 @@
 Adafruit_SoftServo::Adafruit_SoftServo(void) {
   isAttached = false;
   servoPin = 255;
-  angle = 90;
+  //angle = 90;
 }
 
 void Adafruit_SoftServo::attach(uint8_t pin) {
   servoPin = pin;
-  angle = 90;
+  //angle = 90;
   isAttached = true;
   pinMode(servoPin, OUTPUT);
 }
@@ -34,11 +34,15 @@ boolean  Adafruit_SoftServo::attached(void) {
 }
 
 void Adafruit_SoftServo::write(uint8_t a) {
-  angle = a;
-
   if (! isAttached) return;
   micros = map(a, 0, 180, 1000, 2000);  
 }
+
+void Adafruit_SoftServo::writeMicroseconds(uint16_t a) {
+	if (!isAttached) return;
+	micros = a;
+}
+
 
 void Adafruit_SoftServo::refresh(void) {
   digitalWrite(servoPin, HIGH);

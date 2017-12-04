@@ -17,9 +17,10 @@ class Adafruit_SoftServo {
   void detach();
   boolean attached();
   void write(uint8_t a);
+  void writeMicroseconds(uint16_t a);
   void refresh(void);
  private:
   boolean isAttached;
-  uint8_t servoPin, angle;
+  uint8_t servoPin;
   uint16_t micros;
 };
